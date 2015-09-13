@@ -1,0 +1,23 @@
+geometry_msgs::Point desPos;                         // The desired position of F1;
+				MathLib::Vector tmppos;
+				tmppos.Resize(3);
+				MathLib::Vector tmpvf;
+				tmpvf.Resize(3);
+
+				tmpvf(0)=RobustGrasp->VecPosF3(0);
+				tmpvf(1)=RobustGrasp->VecPosF3(1);
+				tmpvf(2)=RobustGrasp->VecPosF3(2);
+
+				double k=0.2;
+
+				// simple adaption used here.
+				tmppos=(RobustGrasp->VecPosF1-RobustGrasp->VecPosF2)/( (RobustGrasp->VecPosF1-RobustGrasp->VecPosF2).Norm())*k+
+						(RobustGrasp->VecPosF1-tmpvf)/((RobustGrasp->VecPosF1-tmpvf).Norm())*0.03;
+
+				desPos.x = tmppos(0)+RobustGrasp->VecPosF1(0);
+				desPos.y = tmppos(1)+RobustGrasp->VecPosF1(1);
+				desPos.z = tmppos(2)+RobustGrasp->VecPosF1(2);
+				srv.request.parms.FinCorrectionStiffness.push_back(25);
+				srv.request.parms.FinDesiredCorrection.push_back(desPos);
+				cout<<"Moving F1"<<(RobustGrasp->VecPosF1-RobustGrasp->VecPosF2)/( (RobustGrasp->VecPosF1-RobustGrasp->VecPosF2).Norm())*k<<endl;
+

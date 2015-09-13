@@ -1,0 +1,23 @@
+<package>
+  <description brief="GraspCorrection">
+
+     GraspCorrection
+
+  </description>
+  <author></author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/GraspCorrection</url>
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="std_msgs"/>
+  <depend package="MathLib"/>
+  <depend package ="SynTouchPublisher"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="ObjImpManipulation"/>
+  <depend package ="SGaussians"/>
+   <depend package="tf"/>
+</package>
+
+
